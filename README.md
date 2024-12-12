@@ -25,7 +25,7 @@ Follow these steps to set up and run the application on your local machine:
 1. **Clone the repository:**
 ```bash
 git clone https://github.com/yourusername/ecommerce-app.git
-cd ecommerce-app
+cd spring-ecommerce-example
 ```
 
 2. **Build and run the application:**
