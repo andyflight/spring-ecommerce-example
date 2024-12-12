@@ -7,7 +7,7 @@
 ### Prerequisites
 Before you can run this project, make sure you have the following installed:
 - **JDK 17+** — Required to compile and run the application.
-- **Gradle 7+** — To build the project and manage dependencies.
+- **Gradle 4.4.1+** — To build the project and manage dependencies.
 - **Git** — To clone the repository.
 
 You can check your installed versions with:
