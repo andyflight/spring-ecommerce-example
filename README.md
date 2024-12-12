@@ -7,7 +7,7 @@
 ### Prerequisites
 Before you can run this project, make sure you have the following installed:
 - **JDK 17+** — Required to compile and run the application.
-- **Gradle 7+** — To build the project and manage dependencies.
+- **Gradle 4.4.1+** — To build the project and manage dependencies.
 - **Git** — To clone the repository.
 
 You can check your installed versions with:
@@ -24,8 +24,8 @@ Follow these steps to set up and run the application on your local machine:
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/ecommerce-app.git
-cd ecommerce-app
+git clone https://github.com/andyflight/spring-ecommerce-example.git
+cd spring-ecommerce-example
 ```
 
 2. **Build and run the application:**
