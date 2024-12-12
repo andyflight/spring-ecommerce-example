@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Order {
     Long id;
     UUID orderNumber;
+    Customer customer;
     List<OrderItem> orderItems;
     OrderStatus status;
     Date createdAt;
@@ -25,13 +26,7 @@ public class Order {
 
         return this.orderItems.stream()
                 .filter(Objects::nonNull)
-                .mapToDouble(orderItem -> {
-                    Product product = orderItem.getProduct();
-                    if (product == null) {
-                        throw new EmptyOrderException("OrderItem product cannot be null");
-                    }
-                    return product.getPrice() * orderItem.getQuantity();
-                })
+                .mapToDouble(orderItem -> orderItem.getProductOldPrice() * orderItem.getQuantity())
                 .sum();
     }
 
