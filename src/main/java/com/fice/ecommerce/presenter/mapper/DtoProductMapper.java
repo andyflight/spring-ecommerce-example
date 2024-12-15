@@ -14,7 +14,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface DtoProductMapper {
 
-
     ProductContext toContext(ProductRequestDto dto);
 
     @Mapping(target="categoryNames", source="categories")
