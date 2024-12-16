@@ -48,7 +48,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         problemDetail.setTitle("Product Not Found");
         return problemDetail;
     }
-
+    
+    @ExceptionHandler(OrderNotFoundException.class)
+    ProblemDetail handleOrderNotFoundException(OrderNotFoundException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(NOT_FOUND, ex.getMessage());
+        problemDetail.setType(URI.create("order-not-found"));
+        problemDetail.setTitle("Order Not Found");
+        return problemDetail;
+    }
+    
     @ExceptionHandler(EmptyOrderException.class)
     ProblemDetail handleEmptyOrderException(EmptyOrderException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(UNPROCESSABLE_ENTITY, ex.getMessage());

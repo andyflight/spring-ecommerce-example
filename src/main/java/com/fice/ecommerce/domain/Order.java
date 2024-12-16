@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class Order {
     Long id;
     UUID orderNumber;
