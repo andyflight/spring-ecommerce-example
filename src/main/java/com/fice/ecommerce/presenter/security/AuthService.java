@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -21,5 +23,13 @@ public class AuthService {
             .password(encodedPassword)
             .build();
     return customerService.createCustomer(secureContext);
+  }
+
+  public Customer update(UUID reference, @Valid CustomerContext customerContext) {
+    String encodedPassword = passwordEncoder.encode(customerContext.getPassword());
+    CustomerContext secureContext = customerContext.toBuilder()
+            .password(encodedPassword)
+            .build();
+    return customerService.updateCustomer(reference, secureContext);
   }
 }

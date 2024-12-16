@@ -6,6 +6,7 @@ import com.fice.ecommerce.presenter.dto.SimpleResponse;
 import com.fice.ecommerce.presenter.dto.customer.CustomerRequestDto;
 import com.fice.ecommerce.presenter.dto.customer.CustomerResponseDto;
 import com.fice.ecommerce.presenter.mapper.DtoCustomerMapper;
+import com.fice.ecommerce.presenter.security.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,17 +23,18 @@ public class CustomerController {
 
   private final CustomerService customerService;
   private final DtoCustomerMapper dtoCustomerMapper;
+  private final AuthService authService;
 
   @PostMapping
   public ResponseEntity<CustomerResponseDto> createCustomer(@RequestBody @Valid CustomerRequestDto request) {
-    Customer customer = customerService.createCustomer(dtoCustomerMapper.toContext(request));
+    Customer customer = authService.signUp(dtoCustomerMapper.toContext(request));
     return ResponseEntity.ok(dtoCustomerMapper.toDto(customer));
   }
 
   @PutMapping("/{reference}")
   public ResponseEntity<CustomerResponseDto> updateCustomer(@PathVariable UUID reference,
                                                             @RequestBody @Valid CustomerRequestDto request) {
-    Customer customer = customerService.updateCustomer(reference, dtoCustomerMapper.toContext(request));
+    Customer customer = authService.update(reference, dtoCustomerMapper.toContext(request));
     return ResponseEntity.ok(dtoCustomerMapper.toDto(customer));
   }
 
