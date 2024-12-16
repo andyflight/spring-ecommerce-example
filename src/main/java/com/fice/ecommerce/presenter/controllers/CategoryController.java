@@ -4,7 +4,6 @@ import com.fice.ecommerce.application.CategoryService;
 import com.fice.ecommerce.presenter.dto.category.CategoryResponseDto;
 import com.fice.ecommerce.presenter.mapper.DtoCategoryMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
