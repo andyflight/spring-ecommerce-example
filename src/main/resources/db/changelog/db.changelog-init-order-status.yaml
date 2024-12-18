@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: table-order-status
+      author: andyflight
+      changes:
+        - createSequence:
+            sequenceName: order_status_id_seq
+            incrementBy: 50
+
+        - createTable:
+            tableName: order_status
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_status
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+        - addUniqueConstraint:
+            tableName: order_status
+            columnNames: order_status
+            constraintName: uq_order_status
