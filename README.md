@@ -29,7 +29,10 @@ cd spring-ecommerce-example
 ```
 
 2. **Build and run the application:**
+
 ```bash
+./gralew update
+docker-compose up --build
 ./gradlew bootRun
 ```
 
