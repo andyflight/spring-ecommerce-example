@@ -2,6 +2,7 @@ package com.fice.ecommerce.data.mock.impl;
 
 import com.fice.ecommerce.domain.Product;
 import com.fice.ecommerce.data.ProductRepository;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
+@Scope("prototype")
 public class InMemoryProductRepositoryImpl implements ProductRepository {
 
     private final Map<String, Product> productMap;

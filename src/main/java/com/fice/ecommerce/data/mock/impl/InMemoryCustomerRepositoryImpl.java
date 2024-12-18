@@ -2,11 +2,13 @@ package com.fice.ecommerce.data.mock.impl;
 
 import com.fice.ecommerce.data.CustomerRepository;
 import com.fice.ecommerce.domain.Customer;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 @Repository
+@Scope("singleton")
 public class InMemoryCustomerRepositoryImpl implements CustomerRepository {
 
   private final Map<UUID, Customer> customerMap;

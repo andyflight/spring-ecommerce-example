@@ -9,6 +9,7 @@ import com.fice.ecommerce.domain.Product;
 import com.fice.ecommerce.data.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +17,20 @@ import java.util.List;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
+    private ProductRepository productRepository;
+    private CategoryService categoryService;
 
-    private final ProductRepository productRepository;
-    private final CategoryService categoryService;
-
+    @Autowired
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+    
+    @Autowired
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+    
     @Override
     public Product createProduct(ProductContext productContext) {
 
