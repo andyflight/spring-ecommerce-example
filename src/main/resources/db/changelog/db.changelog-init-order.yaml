@@ -50,3 +50,11 @@ databaseChangeLog:
             referencedTableName: order_status
             referencedColumnNames: id
             constraintName: fk_order_order_status
+  - changeSet:
+      id: seed-orders
+      author: ArtemLyah
+      changes:
+        - loadData:
+            tableName: order
+            file: db/changelog/seeds/orders.csv
+            separator: ","

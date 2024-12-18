@@ -46,3 +46,11 @@ databaseChangeLog:
             tableName: customer
             columnNames: username
             constraintName: uq_customer_username
+  - changeSet:
+      id: seed-customer
+      author: ArtemLyah
+      changes:
+        - loadData:
+            tableName: customer
+            file: db/changelog/seeds/customers.csv
+            separator: ","
