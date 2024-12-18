@@ -26,3 +26,12 @@ databaseChangeLog:
             tableName: category
             columnNames: name
             constraintName: uq_category_name
+  - changeSet:
+      id: seed-category
+      author: ArtemLyah
+      changes:
+        - loadData:
+            tableName: category
+            file: db/changelog/seeds/categories.csv
+            separator: ","
+

@@ -41,8 +41,14 @@ databaseChangeLog:
             tableName: product
             columnNames: code
             constraintName: uq_product_code
-
-
+  - changeSet:
+      id: seed-product
+      author: ArtemLyah
+      changes:
+        - loadData:
+            tableName: product
+            file: db/changelog/seeds/products.csv
+            separator: ","
 
 
 

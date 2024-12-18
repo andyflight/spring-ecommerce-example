@@ -34,4 +34,11 @@ databaseChangeLog:
             referencedTableName: product
             referencedColumnNames: id
             constraintName: fk_category_product_product
-
+  - changeSet:
+      id: seed-category-product
+      author: ArtemLyah
+      changes:
+        - loadData:
+            tableName: category_product
+            file: db/changelog/seeds/category_products.csv
+            separator: ","
