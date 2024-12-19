@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
 public class InMemoryCustomerRepositoryImpl implements CustomerRepository {
 
   private final Map<UUID, Customer> customerMap;
