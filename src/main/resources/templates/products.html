@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="EN">
+<head>
+    <title>Product Management</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body class="body-container">
+<header class="header">
+    <h1 class="main-title">Product Management</h1>
+</header>
+
+<!-- Show All Products -->
+<section class="products-section">
+    <h2 class="section-title">All Products</h2>
+    <table class="products-table">
+        <thead>
+        <tr>
+            <th class="table-header">Code</th>
+            <th class="table-header">Name</th>
+            <th class="table-header">Description</th>
+            <th class="table-header">Price</th>
+            <th class="table-header">Categories</th>
+            <th class="table-header">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="product-row" th:each="product : ${products}">
+            <td class="product-code" th:text="${product.code}"></td>
+            <td class="product-name" th:text="${product.name}"></td>
+            <td class="product-description" th:text="${product.description}"></td>
+            <td class="product-price" th:text="${product.price}"></td>
+            <td class="product-categories">
+                <ul class="categories-list">
+                    <li class="category-item" th:each="category : ${product.categoryNames}" th:text="${category}"></li>
+                </ul>
+            </td>
+            <td class="product-actions">
+                <a class="edit-link" th:href="@{/products/edit/{code}(code=${product.code})}">Edit</a>
+                <form class="delete-form" th:action="@{/products/delete/{code}(code=${product.code})}" method="post" th:if="${product.price > 10}">
+                    <button class="delete-button" type="submit">Delete</button>
+                </form>
+                <span class="delete-restricted" th:unless="${product.price > 10}">Cannot Delete (Price ≤ 10)</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Create New Product -->
+<section class="form-section">
+    <h2 class="section-title">Create New Product</h2>
+    <form class="product-form" th:action="@{/products/new}" method="post">
+        <label class="form-label">Code:</label>
+        <label>
+            <input class="form-input" type="text" name="code" th:value="${productRequestDto?.code}" required pattern="\d{12,13}" />
+        </label>
+
+        <label class="form-label">Name:</label>
+        <label>
+            <input class="form-input" type="text" name="name" th:value="${productRequestDto?.name}" required maxlength="100" />
+        </label>
+
+        <label class="form-label">Description:</label>
+        <label>
+            <textarea class="form-textarea" name="description" th:text="${productRequestDto?.description}" required maxlength="255"></textarea>
+        </label>
+
+        <label class="form-label">Price:</label>
+        <label>
+            <input class="form-input" type="number" name="price" th:value="${productRequestDto?.price}" required min="0.01" step="0.01" />
+        </label>
+
+        <label class="form-label">Categories (comma separated):</label>
+        <label>
+            <input class="form-input" type="text" name="categoryNames" th:value="${productRequestDto?.categoryNames}" required />
+        </label>
+
+        <button class="form-button" type="submit">Create Product</button>
+    </form>
+</section>
+
+<!-- Update Product -->
+<section class="form-section" th:if="${productToEdit != null}">
+    <h2 class="section-title">Edit Product</h2>
+    <form class="product-form" th:action="@{/products/edit/{code}(code=${productToEdit.code})}" method="post">
+        <label class="form-label">Code:</label>
+        <label>
+            <input class="form-input" type="text" name="code" th:value="${productToEdit.code}" readonly />
+        </label>
+
+        <label class="form-label">Name:</label>
+        <label>
+            <input class="form-input" type="text" name="name" th:value="${productToEdit.name}" required maxlength="100" />
+        </label>
+
+        <label class="form-label">Description:</label>
+        <label>
+            <textarea class="form-textarea" name="description" th:text="${productToEdit.description}" required maxlength="255"></textarea>
+        </label>
+
+        <label class="form-label">Price:</label>
+        <label>
+            <input class="form-input" type="number" name="price" th:value="${productToEdit.price}" required min="0.01" step="0.01" />
+        </label>
+
+        <label class="form-label">Categories (comma separated):</label>
+        <label>
+            <input class="form-input" type="text" name="categoryNames" th:value="${productToEdit.categoryNames}" required />
+        </label>
+
+        <button class="form-button" type="submit">Update Product</button>
+    </form>
+</section>
+
+<!-- Product Count -->
+<section class="product-count-section">
+    <h3 class="count-title">Product Count</h3>
+    <div class="product-count" th:switch="${products != null ? products.size() : 0}">
+        <p class="count-message" th:case="0">No products available.</p>
+        <p class="count-message" th:case="1">There is <span class="count-number">1</span> product available.</p>
+        <p class="count-message" th:case="*">There are <span class="count-number" th:text="${products.size()}"></span> products available.</p>
+    </div>
+</section>
+</body>
+</html>
