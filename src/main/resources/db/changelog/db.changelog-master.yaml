@@ -13,3 +13,5 @@ databaseChangeLog:
       file: db/changelog/db.changelog-init-order.yaml
   - include:
       file: db/changelog/db.changelog-init-order-item.yaml
+  - include:
+      file: db/changelog/db.changelog-uq-constraint-order.yaml

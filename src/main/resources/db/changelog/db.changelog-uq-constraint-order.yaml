@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: uq-constraint-order
+      author: andyflight
+      changes:
+        - addUniqueConstraint:
+            tableName: order
+            columnNames: order_number
+            constraintName: uq_order_order_number
