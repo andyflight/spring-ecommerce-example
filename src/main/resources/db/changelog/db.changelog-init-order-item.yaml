@@ -13,6 +13,7 @@ databaseChangeLog:
               - column:
                   name: id
                   type: BIGINT
+                  defaultValueSequenceNext: order_item_id_seq
                   constraints:
                     primaryKey: true
                     nullable: false

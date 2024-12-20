@@ -1,5 +1,5 @@
-id,order_number,created_at,status_id,customer_id
-1,f99283a2-daee-447e-a870-6ad05b52a946,2024-01-28,1,1
-2,60d6820d-2324-4041-b4d1-43fdde4b3505,2024-01-29,1,1
-3,c8529a59-82bc-4bf4-bd4b-e6b25ac189dc,2024-02-01,1,2
-4,71e53c64-086e-405d-85a2-37fd69332dcf,2024-03-22,1,3
+order_number,created_at,status,customer_id
+f99283a2-daee-447e-a870-6ad05b52a946,2024-01-28,PENDING,1
+60d6820d-2324-4041-b4d1-43fdde4b3505,2024-01-29,CANCELED,1
+c8529a59-82bc-4bf4-bd4b-e6b25ac189dc,2024-02-01,COMPLETED,51
+71e53c64-086e-405d-85a2-37fd69332dcf,2024-03-22,PENDING,101
