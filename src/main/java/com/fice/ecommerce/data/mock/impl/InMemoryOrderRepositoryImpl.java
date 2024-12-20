@@ -2,11 +2,9 @@ package com.fice.ecommerce.data.mock.impl;
 
 import com.fice.ecommerce.data.OrderRepository;
 import com.fice.ecommerce.domain.Order;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
 public class InMemoryOrderRepositoryImpl implements OrderRepository {
     private final Map<String, Order> ordersMap;
     
