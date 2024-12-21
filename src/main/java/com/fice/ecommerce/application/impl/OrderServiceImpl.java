@@ -22,7 +22,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
-  
+    
     @Override
     public Order createOrder(CreateOrderContext context) {
         List<OrderItem> orderItems = context.getOrderItems().stream()
@@ -51,9 +51,7 @@ public class OrderServiceImpl implements OrderService {
             .status(orderStatus)
             .build();
         
-        orderRepository.save(newOrder);
-        
-        return newOrder;
+        return orderRepository.save(newOrder);
     }
     
     @Override
